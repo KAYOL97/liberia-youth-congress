@@ -182,9 +182,37 @@
   .kicker { font-size: 14px; color: var(--gold); letter-spacing: 0.02em; margin: 0 0 10px; }
   .kicker a { text-decoration: none; color: var(--gold); }
   .kicker a:hover { text-decoration: underline; }
-  .page-title { font-size: clamp(32px, 5vw, 52px); font-weight: 600; margin: 0 0 14px; max-width: 16ch; }
- .lede {font-size: 19px; color: #FFFFFF; background-color: #C00000; max-width: 62ch; margin: 0; padding: 12px 16px;}
+ /* =========================================================
+   DESKTOP HOMEPAGE TITLE + LEDE
+   ========================================================= */
 
+.page-title {
+  font-size: 34px;
+  line-height: 1.12;
+  font-weight: 600;
+
+  color: #FFFFFF;
+
+  margin: 0 0 8px;
+
+  max-width: none;
+  white-space: nowrap;
+}
+
+.lede {
+  font-size: 15px;
+  line-height: 1.3;
+
+  color: #FFFFFF;
+  background-color: #C00000;
+
+  max-width: 700px;
+
+  margin: 0;
+  padding: 7px 14px;
+
+  border-radius: 10px;
+}
   /* ---------- content ---------- */
   main { max-width: 780px; margin: 0 auto; padding: 44px 24px 80px; }
   main section + section { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line); }
@@ -906,30 +934,30 @@
   transform: translate(-6px, 8px);
 }
 
-/* Smaller homepage title */
+/* One-line white title above the red box */
 #pageTitle {
-  font-size: 24px;
-  line-height: 1.1;
-  margin-bottom: 7px;
-  max-width: 19ch;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 600;
+
+  color: #FFFFFF;
+
+  margin: 0 0 5px;
+
+  max-width: none;
+  white-space: nowrap;
 }
 
-/* Small, slim red lede box */
+/* Slim red lede box */
 #pageLede {
   font-size: 8px;
   line-height: 1.2;
 
-  /* Makes the red box shorter and narrower */
   max-width: 75%;
-
-  /* Very small vertical padding */
   padding: 3px 7px;
 
-  /* Rounded corners */
   border-radius: 7px;
-
-  /* Prevent unnecessary width */
-  width: auto; }
+}
 
 } 
 
@@ -1042,7 +1070,7 @@
       <h4>About us</h4>
       <ul>
         <li><a href="#about-story" data-route="about-story">Our Story</a></li>
-        <li><a href="#about-mission" data-route="about-mission">Mission &amp; vision</a></li>
+        <li><a href="#about-mission" data-route="about-mission">Mission &amp; Vision</a></li>
         <li><a href="#about-values" data-route="about-values">Core Values</a></li>
         <li><a href="#about-manifesto" data-route="about-manifesto">The Manifesto</a></li>
       </ul>
@@ -1060,10 +1088,10 @@
     <div>
       <h4>Get involved</h4>
       <ul>
-        <li><a href="#media-press" data-route="media-press">Press releases</a></li>
-        <li><a href="#member-why" data-route="member-why">Why join</a></li>
-        <li><a href="#member-register" data-route="member-register">Register now</a></li>
-        <li><a href="#" onclick="return false" aria-disabled="true">Contact headquarters</a></li>
+        <li><a href="#media-press" data-route="media-press">Press Releases</a></li>
+        <li><a href="#member-why" data-route="member-why">Why Join</a></li>
+        <li><a href="#member-register" data-route="member-register">Register Now</a></li>
+        <li><a href="#" onclick="return false" aria-disabled="true">Contact Headquarters</a></li>
       </ul>
     </div>
   </div>
@@ -1116,7 +1144,7 @@
         <h2 class="section-h">Where to start</h2>
         <ul class="home-links">
           <li><a href="#about-manifesto" data-route="about-manifesto"><span class="num">01</span>Read the manifesto<br><span class="muted">Six pillars for the next election cycle</span></a></li>
-          <li><a href="#leadership-chairman" data-route="leadership-chairman"><span class="num">02</span>Meet the leadership<br><span class="muted">National officers and county coordinators</span></a></li>
+            <li><a href="#leadership-chairman" data-route="leadership-chairman"><span class="num">02</span>Meet the leadership<br><span class="muted">National officers and county coordinators</span></a></li>
           <li><a href="#leadership-leader" data-route="leadership-leader"><span class="num">03</span>Meet the Political Leader<br><span class="muted">EUGENE TUAN-WLEH WILLIAMS</span></a></li>
           <li><a href="#media-press" data-route="media-press"><span class="num">04</span>Read the news<br><span class="muted">Press releases and statements</span></a></li>
           <li><a href="#member-register" data-route="member-register"><span class="num">05</span>Join the Congress<br><span class="muted">Register with your county chapter</span></a></li>
@@ -1127,10 +1155,10 @@
   <div class="home-highlight">
     <img class="avatar-sm" src="leader.jpeg" alt="EUGENE TUAN-WLEH WILLIAMS, Political Leader">
     <div class="quote" style="margin:0;">
-      <p>&ldquo;“The greatest challenges confronting Liberian society today, including unemployment, rape and sexual and gender-based violence (SGBV), gender inequality, drug and substance abuse, inadequate access to quality education and healthcare, poverty and economic hardship, teenage pregnancy, crime and violence, 
+      <p>&ldquo;The greatest challenges confronting Liberian society today, including unemployment, rape and sexual and gender-based violence (SGBV), gender inequality, drug and substance abuse, inadequate access to quality education and healthcare, poverty and economic hardship, teenage pregnancy, crime and violence, 
         poor mental and psychosocial well-being, youth and child exploitation, limited youth participation in decision-making, restricted access to finance for entrepreneurship, 
         and limited technological opportunities, disproportionately affect young people. As the demographic most impacted by these realities, we have both a responsibility and a vested 
-        interest in leading the efforts to address them. This is why young people must actively occupy leadership spaces and contribute meaningfully to shaping policies and solutions that advance national development and social progress.”&rdquo;</p>
+        interest in leading the efforts to address them. This is why young people must actively occupy leadership spaces and contribute meaningfully to shaping policies and solutions that advance national development and social progress.&rdquo;</p>
       <cite>EUGENE TUAN-WLEH WILLIAMS, Political Leader</cite>
     </div>
   </div>
