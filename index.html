@@ -72,10 +72,155 @@
     border-radius: 6px;
   }
 
+  /* =========================================================
+   HOMEPAGE: WHERE TO START + NEWSLETTER
+   ========================================================= */
+
+.home-below-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 25px;
+  align-items: start;
+  margin-bottom: 30px;
+}
+
+.home-below-hero .hero-home {
+  width: calc(100% + 40px);
+  margin-left: -20px;
+}
+
+/* NEWSLETTER */
+.newsletter-box {
+  width: 100%;
+  background: #F6F1E4;
+  border: 1px solid #D9CFB2;
+  border-radius: 8px;
+  padding: 22px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.newsletter-box h2 {
+  margin: 0 0 8px;
+  color: #C00000;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.newsletter-box p {
+  margin: 0 0 16px;
+  color: #1C1B17;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.newsletter-box input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  margin: 0 0 10px;
+  border: 1px solid #D9CFB2;
+  border-radius: 5px;
+  background: #FFFFFF;
+  color: #1C1B17;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.newsletter-box input:focus {
+  outline: 2px solid #1B67C4;
+  outline-offset: 1px;
+}
+
+.newsletter-box button {
+  width: 100%;
+  padding: 11px 14px;
+  border: none;
+  border-radius: 5px;
+  background: #C00000;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.newsletter-box button:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@media screen and (max-width: 700px) {
+
+  .home-below-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .home-below-hero .hero-home,
+  .newsletter-box {
+    width: 100%;
+  }
+
+  .newsletter-box {
+    padding: 18px;
+  }
+
+  .newsletter-box h2 {
+    font-size: 22px;
+  }
+
+  .newsletter-box p {
+    font-size: 13px;
+  }
+
+}
+
+/* =========================================================
+   POLITICAL LEADER HOMEPAGE SECTION
+   ========================================================= */
+
+.home-highlight {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 22px;
+  width: 100%;
+}
+
+.home-highlight .avatar-sm {
+  width: 220px;
+  height: 180px;
+  flex: 0 0 220px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 3px;
+  display: block;
+}
+
+.home-highlight .quote {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 0;
+}
+
   .hero-home .section-h,
   main section:nth-of-type(2) .section-h {
     color: #C00000;
   }
+
+  /* Space between Political Leader and Where to Start */
+
+.home-highlight {
+  margin-bottom: 50px;
+}
 
   .hero-home .home-links a,
   .hero-home .home-links .num,
@@ -1147,18 +1292,9 @@
   var PAGES = {
 
     'home': { tab:'home', kicker:'', title:'A movement to redeem Liberia\'s promise', lede:'Liberia Youth Congress (LYC) organizes county by county for accountable leadership, shared prosperity, and a government Liberians can trust again.', body: function(){ return `
-      <section class="hero-home">
-        <h2 class="section-h">Where to start</h2>
-        <ul class="home-links">
-          <li><a href="#about-manifesto" data-route="about-manifesto"><span class="num">01</span>Read the manifesto<br><span class="muted">Six pillars for the next election cycle</span></a></li>
-            <li><a href="#leadership-chairman" data-route="leadership-chairman"><span class="num">02</span>Meet the leadership<br><span class="muted">National officers and county coordinators</span></a></li>
-          <li><a href="#leadership-leader" data-route="leadership-leader"><span class="num">03</span>Meet the Political Leader<br><span class="muted">EUGENE TUAN-WLEH WILLIAMS</span></a></li>
-          <li><a href="#media-press" data-route="media-press"><span class="num">04</span>Read the news<br><span class="muted">Press releases and statements</span></a></li>
-          <li><a href="#member-register" data-route="member-register"><span class="num">05</span>Join the Congress<br><span class="muted">Register with your county chapter</span></a></li>
-        </ul>
-      </section>
-      <section>
-  <h2 class="section-h">A word from the Political Leader</h2>
+      
+       <section>
+    <h2 class="section-h">A word from the Political Leader</h2>
   <div class="home-highlight">
     <img class="avatar-sm" src="leader.jpeg" alt="EUGENE TUAN-WLEH WILLIAMS, Political Leader">
     <div class="quote" style="margin:0;">
@@ -1170,6 +1306,49 @@
     </div>
   </div>
 </section>
+
+
+      <div class="home-below-hero">
+      <section class="hero-home">
+        <h2 class="section-h">Where to start</h2>
+        <ul class="home-links">
+          <li><a href="#about-manifesto" data-route="about-manifesto"><span class="num">01</span>Read the manifesto<br><span class="muted">Six pillars for the next election cycle</span></a></li>
+            <li><a href="#leadership-chairman" data-route="leadership-chairman"><span class="num">02</span>Meet the leadership<br><span class="muted">National officers and county coordinators</span></a></li>
+          <li><a href="#leadership-leader" data-route="leadership-leader"><span class="num">03</span>Meet the Political Leader<br><span class="muted">EUGENE TUAN-WLEH WILLIAMS</span></a></li>
+          <li><a href="#media-press" data-route="media-press"><span class="num">04</span>Read the news<br><span class="muted">Press releases and statements</span></a></li>
+          <li><a href="#member-register" data-route="member-register"><span class="num">05</span>Join the Congress<br><span class="muted">Register with your county chapter</span></a></li>
+        </ul>
+      </section>
+      <aside class="newsletter-box">
+
+        <h2>Stay Informed</h2>
+
+        <p>
+          Subscribe to the Liberia Youth Congress newsletter
+          for updates, announcements, activities, and important
+          information from the Congress.
+        </p>
+
+        <form action="#" method="post">
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            aria-label="Email address"
+            required
+          >
+
+          <button type="submit">
+            Subscribe
+          </button>
+
+        </form>
+
+        </aside>
+      </div>
+
+     
       <section>
         <h2 class="section-h">Get involved</h2>
         <p>Membership is open to every eligible Liberian who shares the Squad's core values, regardless of county or background.</p>
