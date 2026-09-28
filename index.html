@@ -790,29 +790,31 @@
     line-height: 1;
     white-space: nowrap;
   }
+@media screen and (max-width: 700px) 
 
-  /* Make JOIN THE CONGRESS button smaller */
-  .nav-cta {
-    flex: 0 0 auto;
-    margin: 0;
-  }
+{
+    /* ---------- Compact JOIN THE CONGRESS button on phones ---------- */
 
-  .nav-cta .btn,
-  .nav-cta a,
-  .nav-cta button {
-    padding: 7px 9px;
-    font-size: 11px;
-    line-height: 1.1;
+  .cta-join {
+    padding: 6px 9px !important;
+    font-size: 11px !important;
+    line-height: 1.1 !important;
+    min-width: 0 !important;
+    width: auto !important;
     white-space: nowrap;
   }
 
-    .nav-cta .btn {
-    width: auto !important;
-    min-width: 0 !important;
-    max-width: none !important;
+    /* ---------- Compact MENU button on phones ---------- */
+
+  .nav-toggle {
+    padding: 5px 7px !important;
+    font-size: 11px !important;
+    line-height: 1.1 !important;
   }
 
-}
+} 
+
+
 
   /* Masthead */
   .masthead {
