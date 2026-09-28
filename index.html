@@ -216,6 +216,78 @@
     color: #C00000;
   }
 
+  /* =========================================================
+   POLITICAL LEADER HOMEPAGE - COMPACT VERSION
+   ========================================================= */
+
+.leader-home-section {
+  max-width: 900px;
+  margin: 0 auto 45px;
+}
+
+.home-highlight {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 22px;
+  width: 100%;
+}
+
+.home-highlight .avatar-sm {
+  width: 220px;
+  height: 180px;
+  flex: 0 0 220px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 3px;
+  display: block;
+}
+
+.home-highlight .quote {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+}
+
+/* Short version shown initially */
+.leader-quote-preview {
+  max-height: 145px;
+  overflow: hidden;
+}
+
+/* Full message hidden initially */
+.leader-quote-more {
+  display: none;
+}
+
+/* When Read More is clicked */
+.leader-quote.expanded .leader-quote-more {
+  display: block;
+}
+
+/* Read More button */
+.read-more-btn {
+  margin-top: 8px;
+  padding: 7px 14px;
+  border: 1px solid #C00000;
+  border-radius: 5px;
+  background: #C00000;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.read-more-btn:hover {
+  opacity: 0.9;
+}
+
+.leader-quote cite {
+  display: block;
+  margin-top: 10px;
+}
+
   /* Space between Political Leader and Where to Start */
 
 .home-highlight {
@@ -1293,18 +1365,55 @@
 
     'home': { tab:'home', kicker:'', title:'A movement to redeem Liberia\'s promise', lede:'Liberia Youth Congress (LYC) organizes county by county for accountable leadership, shared prosperity, and a government Liberians can trust again.', body: function(){ return `
       
-       <section>
-    <h2 class="section-h">A word from the Political Leader</h2>
+      <section class="leader-home-section">
+
+  <h2 class="section-h">A word from the Political Leader</h2>
+
   <div class="home-highlight">
-    <img class="avatar-sm" src="leader.jpeg" alt="EUGENE TUAN-WLEH WILLIAMS, Political Leader">
-    <div class="quote" style="margin:0;">
-      <p>&ldquo;The greatest challenges confronting Liberian society today, including unemployment, rape and sexual and gender-based violence (SGBV), gender inequality, drug and substance abuse, inadequate access to quality education and healthcare, poverty and economic hardship, teenage pregnancy, crime and violence, 
-        poor mental and psychosocial well-being, youth and child exploitation, limited youth participation in decision-making, restricted access to finance for entrepreneurship, 
-        and limited technological opportunities, disproportionately affect young people. As the demographic most impacted by these realities, we have both a responsibility and a vested 
-        interest in leading the efforts to address them. This is why young people must actively occupy leadership spaces and contribute meaningfully to shaping policies and solutions that advance national development and social progress.&rdquo;</p>
+
+    <img class="avatar-sm"
+         src="leader.jpeg"
+         alt="EUGENE TUAN-WLEH WILLIAMS, Political Leader">
+
+    <div class="quote leader-quote">
+
+      <div class="leader-quote-preview">
+        <p>
+          &ldquo;The greatest challenges confronting Liberian society today,
+          including unemployment, rape and sexual and gender-based violence
+          (SGBV), gender inequality, drug and substance abuse, inadequate
+          access to quality education and healthcare, poverty and economic
+          hardship, teenage pregnancy, crime and violence, poor mental and
+          psychosocial well-being, youth and child exploitation, limited youth
+          participation in decision-making, restricted access to finance for
+          entrepreneurship, and limited technological opportunities,
+          disproportionately affect young people.
+        </p>
+      </div>
+
+      <div class="leader-quote-more" id="leaderQuoteMore">
+        <p>
+          As the demographic most impacted by these realities, we have both
+          a responsibility and a vested interest in leading the efforts to
+          address them. This is why young people must actively occupy
+          leadership spaces and contribute meaningfully to shaping policies
+          and solutions that advance national development and social progress.
+          &rdquo;
+        </p>
+      </div>
+
+      <button type="button"
+              class="read-more-btn"
+              id="leaderReadMore">
+        Read more
+      </button>
+
       <cite>EUGENE TUAN-WLEH WILLIAMS, Political Leader</cite>
+
     </div>
+
   </div>
+
 </section>
 
 
@@ -1870,6 +1979,33 @@
 
   render();
 })();
+
+
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const readMoreBtn = document.getElementById("leaderReadMore");
+  const leaderQuote = document.querySelector(".leader-quote");
+
+  if (readMoreBtn && leaderQuote) {
+
+    readMoreBtn.addEventListener("click", function () {
+
+      leaderQuote.classList.toggle("expanded");
+
+      if (leaderQuote.classList.contains("expanded")) {
+        readMoreBtn.textContent = "Read less";
+      } else {
+        readMoreBtn.textContent = "Read more";
+      }
+
+    });
+
+  }
+
+});
+</script>
+ 
 </body>
 </html>
