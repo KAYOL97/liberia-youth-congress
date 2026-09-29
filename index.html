@@ -64,29 +64,152 @@
   img, svg { max-width: 100%; }
   button { font-family: inherit; }
   /* Homepage: "Where to start" list and Political Leader quote section */
-  .hero-home,
-  main section:nth-of-type(2) {
-    background: #FFFFFF;
-    color: #1B67C4;
-    padding: 32px 24px;
-    border-radius: 6px;
-  }
-
-  /* =========================================================
-   HOMEPAGE: WHERE TO START + NEWSLETTER
+ .hero-home {
+  background: #FFFFFF;
+  color: #1B67C4;
+  padding: 32px 24px;
+  border-radius: 6px;
+}
+ /* =========================================================
+   HOMEPAGE MAIN LAYOUT
+   LEFT: Political Leader + Where to Start + Newsletter
+   RIGHT: Tall Gallery / News
    ========================================================= */
 
-.home-below-hero {
+.home-main-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 240px;
-  gap: 25px;
-  align-items: start;
-  margin-bottom: 30px;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  width: 100%;
+  align-items: stretch;
 }
 
-.home-below-hero .hero-home {
-  width: calc(100% + 40px);
-  margin-left: -20px;
+.home-left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+/* Political Leader stays at the top of the left column */
+.home-left-column .leader-home-section {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+/* Where to Start + Newsletter stack vertically */
+.home-left-column .home-below-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  margin: 0;
+}
+
+/* Where to Start */
+.home-left-column .home-below-hero .hero-home {
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Newsletter */
+.home-left-column .newsletter-box {
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TALL RIGHT-SIDE LYC GALLERY / NEWS
+   ========================================================= */
+
+.home-showcase {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  background: #FFFFFF;
+  border: 1px solid #D9CFB2;
+  border-radius: 8px;
+  padding: 22px;
+
+  align-self: stretch;
+}
+
+.home-showcase h2 {
+  margin: 0 0 20px;
+  color: #C00000;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.showcase-slideshow {
+  position: relative;
+  width: 100%;
+}
+
+.showcase-slide {
+  display: none;
+}
+
+.showcase-slide.active {
+  display: block;
+}
+
+.showcase-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 14px;
+}
+
+.showcase-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showcase-slide h3 {
+  margin: 0 0 7px;
+  color: #1C1B17;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.showcase-slide p {
+  margin: 0;
+  color: #4A473E;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.showcase-dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 18px;
+}
+
+.showcase-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #D9CFB2;
+  cursor: pointer;
+}
+
+.showcase-dot.active {
+  background: #C00000;
 }
 
 /* NEWSLETTER */
@@ -211,10 +334,13 @@
   margin: 0;
 }
 
-  .hero-home .section-h,
-  main section:nth-of-type(2) .section-h {
-    color: #C00000;
-  }
+  .hero-home .section-h {
+  color: #C00000;
+}
+
+main section:nth-of-type(2) .section-h {
+  color: #1C1B17;
+}
 
   /* =========================================================
    POLITICAL LEADER HOMEPAGE - COMPACT VERSION
@@ -251,8 +377,8 @@
 
 /* Short version shown initially */
 .leader-quote-preview {
-  max-height: 145px;
-  overflow: hidden;
+  max-height: none;
+  overflow: visible;
 }
 
 /* Full message hidden initially */
@@ -294,13 +420,11 @@
   margin-bottom: 50px;
 }
 
-  .hero-home .home-links a,
-  .hero-home .home-links .num,
-  .hero-home .home-links .muted,
-  main section:nth-of-type(2) p,
-  main section:nth-of-type(2) cite {
-    color: #1B67C4;
-  }
+ .hero-home .home-links a,
+.hero-home .home-links .num,
+.hero-home .home-links .muted {
+  color: #1B67C4;
+}
   .leader-photo {
   width: 140px;
   height: 180px;
@@ -431,7 +555,7 @@
   border-radius: 10px;
 }
   /* ---------- content ---------- */
-  main { max-width: 780px; margin: 0 auto; padding: 44px 24px 80px; }
+  main { max-width: 1400px; margin: 0 auto; padding: 44px 24px 80px; }
   main section + section { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line); }
   h2.section-h { font-size: 26px; font-weight: 600; margin: 0 0 6px; }
   p { margin: 0 0 16px; color: var(--ink); }
@@ -1242,8 +1366,65 @@
     width: 100%;
   }
 
+/* =========================================================
+   HOMEPAGE PHONE LAYOUT
+   ========================================================= */
 
-  
+@media screen and (max-width: 700px) {
+
+  .home-main-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .home-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .home-left-column .home-below-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .home-left-column .home-below-hero .hero-home,
+  .home-left-column .newsletter-box {
+    width: 100%;
+  }
+
+  /* Gallery comes after the left-side content on phones */
+  .home-showcase {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .home-showcase h2 {
+    font-size: 22px;
+  }
+
+  .showcase-image {
+    height: 200px;
+  }
+
+  .newsletter-box {
+    padding: 18px;
+  }
+
+  .newsletter-box h2 {
+    font-size: 22px;
+  }
+
+  .newsletter-box p {
+    font-size: 13px;
+  }
+
+}
+ 
+
 }
 </style>
 </head>
@@ -1365,69 +1546,119 @@
 
     'home': { tab:'home', kicker:'', title:'A movement to redeem Liberia\'s promise', lede:'Liberia Youth Congress (LYC) organizes county by county for accountable leadership, shared prosperity, and a government Liberians can trust again.', body: function(){ return `
       
-      <section class="leader-home-section">
+     <div class="home-main-layout">
 
-  <h2 class="section-h">A word from the Political Leader</h2>
+  <!-- =========================================
+       LEFT COLUMN
+       ========================================= -->
 
-  <div class="home-highlight">
+  <div class="home-left-column">
 
-    <img class="avatar-sm"
-         src="leader.jpeg"
-         alt="EUGENE TUAN-WLEH WILLIAMS, Political Leader">
+    <!-- POLITICAL LEADER -->
+    <section class="leader-home-section">
 
-    <div class="quote leader-quote">
+      <h2 class="section-h">A word from the Political Leader</h2>
 
-      <div class="leader-quote-preview">
-        <p>
-          &ldquo;The greatest challenges confronting Liberian society today,
-          including unemployment, rape and sexual and gender-based violence
-          (SGBV), gender inequality, drug and substance abuse, inadequate
-          access to quality education and healthcare, poverty and economic
-          hardship, teenage pregnancy, crime and violence, poor mental and
-          psychosocial well-being, youth and child exploitation, limited youth
-          participation in decision-making, restricted access to finance for
-          entrepreneurship, and limited technological opportunities,
-          disproportionately affect young people.
-        </p>
+      <div class="home-highlight">
+
+        <div class="quote leader-quote">
+
+          <div class="leader-quote-preview">
+            <p>
+              &ldquo;The greatest challenges confronting Liberian society today,
+              including unemployment, rape and sexual and gender-based violence
+              (SGBV), gender inequality, drug and substance abuse, inadequate
+              access to quality education and healthcare, poverty and economic
+              hardship, teenage pregnancy, crime and violence, poor mental and
+              psychosocial well-being, youth and child exploitation, limited youth
+              participation in decision-making, restricted access to finance for
+              entrepreneurship, and limited technological opportunities,
+              disproportionately affect young people.
+            </p>
+          </div>
+
+          <div class="leader-quote-more" id="leaderQuoteMore">
+            <p>
+              As the demographic most impacted by these realities, we have both
+              a responsibility and a vested interest in leading the efforts to
+              address them. This is why young people must actively occupy
+              leadership spaces and contribute meaningfully to shaping policies
+              and solutions that advance national development and social progress.
+              &rdquo;
+            </p>
+          </div>
+
+          <button type="button"
+                  class="read-more-btn"
+                  id="leaderReadMore">
+            Read more
+          </button>
+
+          <cite>EUGENE TUAN-WLEH WILLIAMS, Political Leader</cite>
+
+        </div>
+
       </div>
 
-      <div class="leader-quote-more" id="leaderQuoteMore">
-        <p>
-          As the demographic most impacted by these realities, we have both
-          a responsibility and a vested interest in leading the efforts to
-          address them. This is why young people must actively occupy
-          leadership spaces and contribute meaningfully to shaping policies
-          and solutions that advance national development and social progress.
-          &rdquo;
-        </p>
-      </div>
-
-      <button type="button"
-              class="read-more-btn"
-              id="leaderReadMore">
-        Read more
-      </button>
-
-      <cite>EUGENE TUAN-WLEH WILLIAMS, Political Leader</cite>
-
-    </div>
-
-  </div>
-
-</section>
+    </section>
 
 
-      <div class="home-below-hero">
+    <!-- WHERE TO START + NEWSLETTER -->
+    <div class="home-below-hero">
+
+      <!-- WHERE TO START -->
       <section class="hero-home">
+
         <h2 class="section-h">Where to start</h2>
+
         <ul class="home-links">
-          <li><a href="#about-manifesto" data-route="about-manifesto"><span class="num">01</span>Read the manifesto<br><span class="muted">Six pillars for the next election cycle</span></a></li>
-            <li><a href="#leadership-chairman" data-route="leadership-chairman"><span class="num">02</span>Meet the leadership<br><span class="muted">National officers and county coordinators</span></a></li>
-          <li><a href="#leadership-leader" data-route="leadership-leader"><span class="num">03</span>Meet the Political Leader<br><span class="muted">EUGENE TUAN-WLEH WILLIAMS</span></a></li>
-          <li><a href="#media-press" data-route="media-press"><span class="num">04</span>Read the news<br><span class="muted">Press releases and statements</span></a></li>
-          <li><a href="#member-register" data-route="member-register"><span class="num">05</span>Join the Congress<br><span class="muted">Register with your county chapter</span></a></li>
+
+          <li>
+            <a href="#about-manifesto" data-route="about-manifesto">
+              <span class="num">01</span>
+              Read the manifesto<br>
+              <span class="muted">Six pillars for the next election cycle</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#leadership-chairman" data-route="leadership-chairman">
+              <span class="num">02</span>
+              Meet the leadership<br>
+              <span class="muted">National officers and county coordinators</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#leadership-leader" data-route="leadership-leader">
+              <span class="num">03</span>
+              Meet the Political Leader<br>
+              <span class="muted">EUGENE TUAN-WLEH WILLIAMS</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#media-press" data-route="media-press">
+              <span class="num">04</span>
+              Read the news<br>
+              <span class="muted">Press releases and statements</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#member-register" data-route="member-register">
+              <span class="num">05</span>
+              Join the Congress<br>
+              <span class="muted">Register with your county chapter</span>
+            </a>
+          </li>
+
         </ul>
+
       </section>
+
+
+      <!-- NEWSLETTER -->
       <aside class="newsletter-box">
 
         <h2>Stay Informed</h2>
@@ -1454,13 +1685,105 @@
 
         </form>
 
-        </aside>
+      </aside>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================
+       RIGHT COLUMN — TALL GALLERY / NEWS
+       ========================================= -->
+
+  <aside class="home-showcase">
+
+    <h2>Latest from the Congress</h2>
+
+    <div class="showcase-slideshow">
+
+      <div class="showcase-slide active">
+
+        <div class="showcase-image">
+          <img
+            src="gallery1.jpg"
+            alt="Liberia Youth Congress event">
+        </div>
+
+        <h3>Congress Activities</h3>
+
+        <p>
+          See the latest activities and events from the Liberia Youth Congress.
+        </p>
+
       </div>
 
+
+      <div class="showcase-slide">
+
+        <div class="showcase-image">
+          <img
+            src="gallery2.jpg"
+            alt="Liberia Youth Congress youth event">
+        </div>
+
+        <h3>Youth Engagement</h3>
+
+        <p>
+          Updates from youth programs and activities across Liberia.
+        </p>
+
+      </div>
+
+
+      <div class="showcase-slide">
+
+        <div class="showcase-image">
+          <img
+            src="gallery3.jpg"
+            alt="Liberia Youth Congress gathering">
+        </div>
+
+        <h3>Latest News</h3>
+
+        <p>
+          Stay informed about the latest news from the Congress.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="showcase-dots">
+
+      <button
+        type="button"
+        class="showcase-dot active"
+        aria-label="Show gallery item 1">
+      </button>
+
+      <button
+        type="button"
+        class="showcase-dot"
+        aria-label="Show gallery item 2">
+      </button>
+
+      <button
+        type="button"
+        class="showcase-dot"
+        aria-label="Show gallery item 3">
+      </button>
+
+    </div>
+
+  </aside>
+
+</div>
      
       <section>
         <h2 class="section-h">Get involved</h2>
-        <p>Membership is open to every eligible Liberian who shares the Squad's core values, regardless of county or background.</p>
+        <p>Membership is open to every eligible Liberian who shares the Congress' core values, regardless of county or background.</p>
         <div class="home-cta">
           <button class="cta-primary" type="button" data-route="member-register">Register with your county chapter</button>
           <button class="cta-secondary" type="button" data-route="about-story">Read our story</button>
@@ -1503,19 +1826,19 @@
       </section>
     `; }},
 
-    'about-values': { tab:'about', kicker:'About us', title:'Core values', lede:'Five commitments every candidate and officer of the Squad signs before running under our banner.', body: function(){ return `
+    'about-values': { tab:'about', kicker:'About us', title:'Core values', lede:'Five commitments every candidate and officer of the Congress signs before running under our banner.', body: function(){ return `
       <section>
         <ul class="plain">
           <li>${STAR}<div><strong>Integrity.</strong> Public office is held in trust, not owned. Every officer discloses income, assets, and conflicts of interest annually.</div></li>
           <li>${STAR}<div><strong>Service.</strong> Elected members keep regular office hours in their home communities, not only in Monrovia.</div></li>
-          <li>${STAR}<div><strong>Unity.</strong> The Squad organizes across county, religious, and ethnic lines; no chapter may campaign against another.</div></li>
+          <li>${STAR}<div><strong>Unity.</strong> The Congress organizes across county, religious, and ethnic lines; no chapter may campaign against another.</div></li>
           <li>${STAR}<div><strong>Justice.</strong> Equal application of the law, regardless of political rank or family name.</div></li>
           <li>${STAR}<div><strong>Self-reliance.</strong> Policy is built around what Liberia can produce, teach, and maintain itself, with partnerships as a supplement, not a substitute.</div></li>
         </ul>
       </section>
     `; }},
 
-    'about-manifesto': { tab:'about', kicker:'About us', title:'The manifesto', lede:'Six pillars the Squad is organizing its candidates and county chapters around for the next election cycle.', body: function(){ return `
+    'about-manifesto': { tab:'about', kicker:'About us', title:'The manifesto', lede:'Six pillars the Congress is organizing its candidates and county chapters around for the next election cycle.', body: function(){ return `
       <section>
         <ol class="pillars">
           <li><h3>Economic renewal</h3><p>Support small enterprise and agriculture with accessible credit, and review extractive-industry contracts for fair local benefit.</p></li>
@@ -1540,22 +1863,17 @@
         <img class="leader-photo"
              src="leader.jpeg"
              alt="EUGENE TUAN-WLEH WILLIAMS, Political Leader">
-
-        <div class="leader-profile-info">
+      <div class="leader-profile-info">
           <h2 class="leader-profile-title">EUGENE TUAN-WLEH WILLIAMS</h2>
-
           <h3 class="leader-profile-subtitle">Political Leader</h3>
-
           <p class="leader-profile-text">
             Leads the party's GOVERNING COUNCIL, and serves as it's principal spokesperson in critical national discussions. Elected by delegates from all fifteen counties to a six-year term.
           </p>
         </div>
-
       </div>
     </section>
-
     <section>
-      <h2 class="section-h">Responsibilities</h2>
+      <h2 class="section-h">Responsibilities:</h2>
       <ul class="plain">
         <li>${STAR}<span>Leads the party's GOVERNING COUNCIL and National Executive Committee.</span></li>
         <li>${STAR}<span>Signs off on the movement's annual financial disclosure before publication.</span></li>
@@ -1579,7 +1897,7 @@
         </div>
       </section>
       <section>
-        <h2 class="section-h">Responsibilities</h2>
+        <h2 class="section-h">Responsibilities:</h2>
         <ul class="plain">
           <li>${STAR}<span>Chairs the executive committee and national convention.</span></li>
           <li>${STAR}<span>Signs off on the party's annual financial disclosure before publication.</span></li>
@@ -1594,18 +1912,22 @@
           <div class="row head"><div>Office</div><div>Officer</div></div>
           <div class="row"><div class="role">POLITICAL LEADER</div><div class="who">EUGENE TUAN-WLEH WILLIAMS</div></div>
           <div class="row"><div class="role">National Chairman</div><div class="who">JOHN T. WINN</div></div>
-          <div class="row"><div class="role">Vice Chairman</div><div class="who">[Full name]</div></div>
-          <div class="row"><div class="role">Secretary-General</div><div class="who">VASCO T. MASSEH</div></div>
-          <div class="row"><div class="role">Deputy Secretary</div><div class="who">[Full name]</div></div>
+          <div class="row"><div class="role">Vice Chair - Administration</div><div class="who">[Full name]</div></div>
+          <div class="row"><div class="role">Vice Chair - IT & Cyber Security</div><div class="who">[Full name]</div></div>
+          <div class="row"><div class="role">Vice Chair - Interparty Affairs</div><div class="who">[Full name]</div></div>
+          <div class="row"><div class="role">Vice Chair - Mobilization & Recruitment </div><div class="who">[Full name]</div></div>
+          <div class="row"><div class="role">Chief Strategist & Head of Secretariat</div><div class="who">VASCO T. MASSEH</div></div>
+          <div class="row"><div class="role">Deputy Secretary - Political Affairs </div><div class="who">Samuel Quayou</div></div>
           <div class="row"><div class="role">Treasurer</div><div class="who">[Full name]</div></div>
-          <div class="row"><div class="role">Political &amp; Elections Officer</div><div class="who">[Full name]</div></div>
           <div class="row"><div class="role">Youth Wing Chair</div><div class="who">[Full name]</div></div>
           <div class="row"><div class="role">Women's Wing Chair</div><div class="who">[Full name]</div></div>
+          <div class="row"><div class="role">ALL COUNTIES COORDINATORS</div><div class="who">[Full name]</div></div>
+          <div class="row"><div class="role">All Committee Presidents</div><div class="who">[Full name]</div></div>
         </div>
       </section>
       <section>
         <h2 class="section-h">How the committee is elected</h2>
-        <p>All eight seats are elected by secret ballot at the biennial national convention, with each county chapter sending an equal number of delegates regardless of population, so no single county can control the outcome.</p>
+        <p>All THIRTEEN seats are elected by secret ballot at the biennial national convention, with each county chapter sending an equal number of delegates regardless of population, so no single county can control the outcome.</p>
       </section>
     `; }},
 
@@ -1636,16 +1958,16 @@
       </section>
     `; }},
 
-    'leadership-youth': { tab:'leadership', kicker:'Leadership', title:"Youth & women's wing", lede:'Two standing wings that train new leaders and hold the party accountable from inside.', body: function(){ return `
+    'leadership-youth': { tab:'leadership', kicker:'Leadership', title:"Youth & Students' Command", lede:'Two standing wings that train new leaders and hold the party accountable from inside.', body: function(){ return `
       <section>
         <h2 class="section-h">Youth wing</h2>
         <p>The Youth Wing and Students' Command are two of the Liberia Youth Congress' most active structures, working together to nurture the next generation of leaders across all fifteen counties of Liberia. Through civic education programs, leadership development initiatives, and strategic capacity-building trainings, they equip young people with the knowledge, skills, and confidence necessary to participate effectively in public life. Membership for the Youth League is open to Liberians between the ages of 18 and 35. The two bodies lead youth outreach activities, promote civic engagement, monitor programs aimed at addressing youth unemployment, and support the identification and development of young leaders. They also play a key role in advancing youth representation by ensuring that qualified young candidates are prepared and encouraged to seek public office at the local level.</p>
-        <p class="muted">Chair: [Full name] &middot; Deputy Chair: [Full name]</p>
+        <p class="muted">Chair: [Full name] &middot; Students' Command Chairman: [Full name]</p>
       </section>
       <section>
         <h2 class="section-h">Women's wing</h2>
         <p>The women's wing recruits and trains women candidates, runs savings and small-business circles in market communities, and reviews every manifesto pillar for its impact on women and girls before national adoption.</p>
-        <p class="muted">Chair: [Full name] &middot; Deputy Chair: [Full name]</p>
+        <p class="muted">Chairlady: [Full name] &middot; Deputy Chairlady: [Full name]</p>
       </section>
     `; }},
 
@@ -1663,10 +1985,8 @@
           <h2 class="section-h">Diaspora Leadership Chart</h2>
 
           <p class="muted">
-            The chart below provides the current structure and open positions
-            for the Diaspora leadership team.
+            The diaspora leadership reprsents Liberians who are in exile suporting the Liberia Youth Congress for a transformative Liberia.
           </p>
-
           <div class="diaspora-chart">
 
             <!-- PRESIDENT -->
@@ -1674,11 +1994,9 @@
 
               <div class="diaspora-card president">
                 <span class="diaspora-role">President</span>
-
                 <span class="diaspora-name">
                   Faith Kou Toomey
                 </span>
-
                 <span class="diaspora-note">
                   Diaspora Liberians
                 </span>
@@ -1693,12 +2011,10 @@
 
             <!-- VICE PRESIDENTS -->
             <div class="diaspora-level two-col">
-
               <div class="diaspora-card">
                 <span class="diaspora-role">
-                  VP for Administration
+                  Vice President for Administration
                 </span>
-
                 <span class="diaspora-name">
                   Elijah Nippy Toby
                 </span>
@@ -1707,9 +2023,8 @@
 
               <div class="diaspora-card">
                 <span class="diaspora-role">
-                  VP for Operation
+                  Vice President for Operation
                 </span>
-
                 <span class="diaspora-name">
                   Oscar Tarphen
                 </span>
@@ -1724,12 +2039,10 @@
 
             <!-- POSITIONS TO BE FILLED -->
             <div class="diaspora-blank-grid">
-
               <div class="diaspora-card placeholder">
                 <span class="diaspora-role">Position</span>
                 <span class="diaspora-name">[To be filled]</span>
               </div>
-
               <div class="diaspora-card placeholder">
                 <span class="diaspora-role">Position</span>
                 <span class="diaspora-name">[To be filled]</span>
@@ -1804,17 +2117,17 @@
     'media-publications': { tab:'media', kicker:'Media resources', title:'Party publications', lede:'Founding and policy documents available to members and the public.', body: function(){ return `
       <section>
         <ul class="doc-list">
-          <li><div><div class="name">Party constitution</div><div class="meta">Adopted 2023 &middot; 24 pages</div></div><button class="doc-btn" type="button" disabled>Available at party offices</button></li>
+          <li><div><div class="name">Party constitution</div><div class="meta">TO BE ADOPTED &middot; 24 pages</div></div><button class="doc-btn" type="button" disabled>Available at party offices</button></li>
           <li><div><div class="name">Six-pillar manifesto</div><div class="meta">Adopted June 2026 &middot; 12 pages</div></div><button class="doc-btn" type="button" disabled>Available at party offices</button></li>
-          <li><div><div class="name">Annual financial disclosure</div><div class="meta">Published January 2026</div></div><button class="doc-btn" type="button" disabled>Available at party offices</button></li>
-          <li><div><div class="name">Member newsletter, Q2 2026</div><div class="meta">Quarterly &middot; 6 pages</div></div><button class="doc-btn" type="button" disabled>Available at party offices</button></li>
+          <li><div><div class="name">Annual financial disclosure</div><div class="meta">TO BE PUBLISHED &middot; 16 pages</div></div><button class="doc-btn" type="button" disabled>Available at party offices</button></li>
+          <li><div><div class="name">Member newsletter, Q2 2026</div><div class="meta">TO BE PUBLISHED &middot; 6 pages</div></div><button class="doc-btn" type="button" disabled>Available at party offices</button></li>
         </ul>
       </section>
     `; }},
 
-    'member-why': { tab:'member', kicker:'Membership', title:'Why join LRS', lede:'Membership is how the Squad stays accountable to the people it represents, not the other way around.', body: function(){ return `
+    'member-why': { tab:'member', kicker:'Membership', title:'Why join LYC', lede:'Membership is how the Congress stays accountable to the people it represents, not the other way around.', body: function(){ return `
       <section>
-        <p>The Squad does not accept foreign campaign financing, so members' dues and volunteer hours are what keep county chapters running between elections. Joining means having a direct vote on the candidates and policies that carry the party's name.</p>
+        <p>The Congress does not accept foreign campaign financing, so members' dues and volunteer hours are what keep county chapters running between elections. Joining means having a direct vote on the candidates and policies that carry the party's authority.</p>
         <ul class="plain">
           <li>${STAR}<span>Vote on manifesto pillars and county candidates at chapter meetings.</span></li>
           <li>${STAR}<span>Stand for local office under the party's banner once eligibility requirements are met.</span></li>
@@ -1976,36 +2289,32 @@
 
     if (page.after) page.after();
   }
+document.addEventListener('click', function(e){
+
+  if (e.target && e.target.id === 'leaderReadMore') {
+
+    var button = e.target;
+    var quote = button.closest('.leader-quote');
+
+    if (!quote) return;
+
+    quote.classList.toggle('expanded');
+
+    if (quote.classList.contains('expanded')) {
+      button.textContent = 'Read less';
+    } else {
+      button.textContent = 'Read more';
+    }
+
+  }
+
+});
+
 
   render();
 })();
 
 
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const readMoreBtn = document.getElementById("leaderReadMore");
-  const leaderQuote = document.querySelector(".leader-quote");
-
-  if (readMoreBtn && leaderQuote) {
-
-    readMoreBtn.addEventListener("click", function () {
-
-      leaderQuote.classList.toggle("expanded");
-
-      if (leaderQuote.classList.contains("expanded")) {
-        readMoreBtn.textContent = "Read less";
-      } else {
-        readMoreBtn.textContent = "Read more";
-      }
-
-    });
-
-  }
-
-});
-</script>
- 
 </body>
 </html>
