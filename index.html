@@ -176,6 +176,31 @@
   object-fit: cover;
 }
 
+.showcase-gallery-link,
+.showcase-content-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.showcase-gallery-link:hover img,
+.showcase-gallery-link:focus-visible img {
+  opacity: 0.92;
+}
+
+.showcase-content-link:hover h3,
+.showcase-content-link:focus-visible h3 {
+  text-decoration: underline;
+}
+
+.showcase-read-more {
+  display: inline-block;
+  margin-top: 12px;
+  color: #C00000;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .showcase-slide h3 {
   margin: 0 0 7px;
   color: #1C1B17;
@@ -1542,6 +1567,93 @@ main section:nth-of-type(2) .section-h {
     ]}
   ];
 
+  /* =========================================================
+   MEDIA RESOURCES → HOMEPAGE LATEST FROM THE CONGRESS
+   ========================================================= */
+
+var MEDIA_FEATURES = [
+  {
+    date: '14 September 2026',
+    title: 'Squad calls for open bidding on county road contracts',
+    description: 'The Liberia Redemption Squad renewed its call for all county road contracts above a set threshold to be published and openly bid, following reports of delays on several rainy-season repairs.',
+    image: 'gallery1.jpg'
+  },
+
+  {
+    date: '2 August 2026',
+    title: "Women's wing launches market savings circles in three counties",
+    description: "The party's women's wing opened its first savings and small-business circles for market women in Bong, Nimba, and Grand Bassa, with plans to expand to five more counties by year end.",
+    image: 'gallery2.jpg'
+  },
+
+  {
+    date: '11 June 2026',
+    title: 'National convention sets six manifesto pillars',
+    description: "Delegates from all fifteen counties adopted the party's six-pillar manifesto at the biennial national convention in Gbarnga.",
+    image: 'gallery3.jpg'
+  }
+];
+
+function initHomeMediaSlider() {
+
+  var image = document.getElementById('homeMediaImage');
+  var date = document.getElementById('homeMediaDate');
+  var title = document.getElementById('homeMediaTitle');
+  var description = document.getElementById('homeMediaDescription');
+
+  var dots = document.querySelectorAll('.showcase-dot');
+
+  if (!image || !date || !title || !description) {
+    return;
+  }
+
+  var currentIndex = 0;
+
+  function showMedia(index) {
+
+    currentIndex = index;
+
+    var item = MEDIA_FEATURES[currentIndex];
+
+    image.src = item.image;
+    image.alt = item.title;
+
+    date.textContent = item.date;
+    title.textContent = item.title;
+    description.textContent = item.description;
+
+    dots.forEach(function(dot, i) {
+      dot.classList.toggle(
+        'active',
+        i === currentIndex
+      );
+    });
+  }
+
+  dots.forEach(function(dot) {
+
+    dot.addEventListener('click', function() {
+
+      var index = Number(
+        dot.getAttribute('data-media-index')
+      );
+
+      showMedia(index);
+
+    });
+
+  });
+
+  setInterval(function() {
+
+    var nextIndex =
+      (currentIndex + 1) % MEDIA_FEATURES.length;
+
+    showMedia(nextIndex);
+
+  }, 5000);
+}
+
   var PAGES = {
 
     'home': { tab:'home', kicker:'', title:'A movement to redeem Liberia\'s promise', lede:'Liberia Youth Congress (LYC) organizes county by county for accountable leadership, shared prosperity, and a government Liberians can trust again.', body: function(){ return `
@@ -1696,88 +1808,123 @@ main section:nth-of-type(2) .section-h {
        RIGHT COLUMN — TALL GALLERY / NEWS
        ========================================= -->
 
-  <aside class="home-showcase">
+ <aside class="home-showcase">
 
-    <h2>Latest from the Congress</h2>
+  <h2>Latest from the Congress</h2>
 
-    <div class="showcase-slideshow">
+ <div class="showcase-slideshow">
 
-      <div class="showcase-slide active">
+  <!-- SLIDE 1 -->
+  <div class="showcase-slide active">
 
-        <div class="showcase-image">
-          <img
-            src="gallery1.jpg"
-            alt="Liberia Youth Congress event">
-        </div>
-
-        <h3>Congress Activities</h3>
-
-        <p>
-          See the latest activities and events from the Liberia Youth Congress.
-        </p>
-
-      </div>
-
-
-      <div class="showcase-slide">
-
-        <div class="showcase-image">
-          <img
-            src="gallery2.jpg"
-            alt="Liberia Youth Congress youth event">
-        </div>
-
-        <h3>Youth Engagement</h3>
-
-        <p>
-          Updates from youth programs and activities across Liberia.
-        </p>
-
-      </div>
-
-
-      <div class="showcase-slide">
-
-        <div class="showcase-image">
-          <img
-            src="gallery3.jpg"
-            alt="Liberia Youth Congress gathering">
-        </div>
-
-        <h3>Latest News</h3>
-
-        <p>
-          Stay informed about the latest news from the Congress.
-        </p>
-
-      </div>
-
+    <!-- IMAGE → PHOTO & VIDEO GALLERY -->
+    <div class="showcase-image">
+      <a href="#media-gallery" data-route="media-gallery" class="showcase-gallery-link">
+        <img
+          src="gallery1.jpg"
+          alt="Liberia Youth Congress event">
+      </a>
     </div>
 
+    <!-- CONTENT → PRESS RELEASES -->
+    <a href="#media-press" data-route="media-press" class="showcase-content-link">
 
-    <div class="showcase-dots">
+      <h3>Congress Activities</h3>
 
-      <button
-        type="button"
-        class="showcase-dot active"
-        aria-label="Show gallery item 1">
-      </button>
+      <p>
+        See the latest activities and events from the Liberia Youth Congress.
+      </p>
 
-      <button
-        type="button"
-        class="showcase-dot"
-        aria-label="Show gallery item 2">
-      </button>
+      <span class="showcase-read-more">Read more &rarr;</span>
 
-      <button
-        type="button"
-        class="showcase-dot"
-        aria-label="Show gallery item 3">
-      </button>
+    </a>
 
+  </div>
+
+
+  <!-- SLIDE 2 -->
+  <div class="showcase-slide">
+
+    <!-- IMAGE → PHOTO & VIDEO GALLERY -->
+    <div class="showcase-image">
+      <a href="#media-gallery" data-route="media-gallery" class="showcase-gallery-link">
+        <img
+          src="gallery2.jpg"
+          alt="Liberia Youth Congress youth event">
+      </a>
     </div>
 
-  </aside>
+    <!-- CONTENT → PRESS RELEASES -->
+    <a href="#media-press" data-route="media-press" class="showcase-content-link">
+
+      <h3>Youth Engagement</h3>
+
+      <p>
+        Updates from youth programs and activities across Liberia.
+      </p>
+
+      <span class="showcase-read-more">Read more &rarr;</span>
+
+    </a>
+
+  </div>
+
+
+  <!-- SLIDE 3 -->
+  <div class="showcase-slide">
+
+    <!-- IMAGE → PHOTO & VIDEO GALLERY -->
+    <div class="showcase-image">
+      <a href="#media-gallery" data-route="media-gallery" class="showcase-gallery-link">
+        <img
+          src="gallery3.jpg"
+          alt="Liberia Youth Congress gathering">
+      </a>
+    </div>
+
+    <!-- CONTENT → PRESS RELEASES -->
+    <a href="#media-press" data-route="media-press" class="showcase-content-link">
+
+      <h3>Latest News</h3>
+
+      <p>
+        Stay informed about the latest news from the Congress.
+      </p>
+
+      <span class="showcase-read-more">Read more &rarr;</span>
+
+    </a>
+
+  </div>
+
+</div>
+
+  <div class="showcase-dots">
+
+    <button
+      type="button"
+      class="showcase-dot active"
+      data-media-index="0"
+      aria-label="Show latest news">
+    </button>
+
+    <button
+      type="button"
+      class="showcase-dot"
+      data-media-index="1"
+      aria-label="Show second latest news">
+    </button>
+
+    <button
+      type="button"
+      class="showcase-dot"
+      data-media-index="2"
+      aria-label="Show third latest news">
+    </button>
+
+  </div>
+
+</aside>
 
 </div>
      
@@ -2181,12 +2328,20 @@ main section:nth-of-type(2) .section-h {
         </form>
       </section>
     `; }, after: function(){
-      var f = document.getElementById('joinForm');
-      if (f) f.addEventListener('submit', function(e){
-        e.preventDefault();
-        document.getElementById('formSuccess').style.display = 'block';
-      });
-    }},
+
+  var f = document.getElementById('joinForm');
+
+  if (f) f.addEventListener('submit', function(e){
+
+    e.preventDefault();
+
+    document.getElementById('formSuccess').style.display = 'block';
+
+  });
+
+  initHomeMediaSlider();
+
+}},
 
     'member-benefits': { tab:'member', kicker:'Membership', title:'Member benefits', lede:'What members get in return for dues and volunteer time.', body: function(){ return `
       <section>
